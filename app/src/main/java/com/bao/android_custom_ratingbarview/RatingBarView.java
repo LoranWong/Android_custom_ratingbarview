@@ -97,15 +97,17 @@ public class RatingBarView extends LinearLayout {
         return imageView;
 
     }
-
-
     public void setStar(int starCount) {
+        setStar(starCount,true);
+    }
+
+    public void setStar(int starCount,boolean animation) {
         starCount = starCount > this.starCount ? this.starCount : starCount;
         starCount = starCount < 0 ? 0 : starCount;
         //TODO
         for (int i = 0; i < starCount; ++i) {
             ((ImageView) getChildAt(i)).setImageDrawable(starFillDrawable);
-            if(mClickable) YoYo.with(Techniques.BounceIn).duration(400).playOn(getChildAt(i));
+            if(animation) YoYo.with(Techniques.BounceIn).duration(400).playOn(getChildAt(i));
         }
 
         for (int i = this.starCount-1 ; i >= starCount; --i) {
