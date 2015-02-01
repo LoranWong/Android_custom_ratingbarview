@@ -25,7 +25,7 @@ public class MainActivity extends ActionBarActivity {
         ratingBarView.setBindObject(1);
         ratingBarView.setOnRatingListener(new RatingBarView.OnRatingListener() {
             @Override
-            public void onRating(Object bindObject) {
+            public void onRating(Object bindObject,int RatingScore) {
                 Toast.makeText(MainActivity.this ,"bindObject : "+bindObject,Toast.LENGTH_SHORT).show();
             }
         });

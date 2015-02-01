@@ -70,7 +70,13 @@ public class RatingBarView extends LinearLayout {
             imageView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (mClickable) setStar(indexOfChild(v) + 1);
+                    if (mClickable){
+                        setStar(indexOfChild(v) + 1);
+                        if (onRatingListener != null) {
+                            onRatingListener.onRating(bindObject,indexOfChild(v) + 1);
+                        }
+                    }
+
                 }
             });
             addView(imageView);
@@ -99,15 +105,11 @@ public class RatingBarView extends LinearLayout {
         //TODO
         for (int i = 0; i < starCount; ++i) {
             ((ImageView) getChildAt(i)).setImageDrawable(starFillDrawable);
-            YoYo.with(Techniques.BounceIn).duration(400).playOn(getChildAt(i));
+            if(mClickable) YoYo.with(Techniques.BounceIn).duration(400).playOn(getChildAt(i));
         }
 
         for (int i = this.starCount-1 ; i >= starCount; --i) {
             ((ImageView) getChildAt(i)).setImageDrawable(starEmptyDrawable);
-        }
-
-        if (onRatingListener != null) {
-            onRatingListener.onRating(bindObject);
         }
 
     }
@@ -118,7 +120,7 @@ public class RatingBarView extends LinearLayout {
      */
     public interface OnRatingListener {
 
-        void onRating(Object bindObject);
+        void onRating(Object bindObject,int RatingScore);
 
     }
 }
