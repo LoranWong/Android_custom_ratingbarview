@@ -2,6 +2,8 @@
 ###### a custom RatingBarView with Animation and you can set Image and count
 ###### 一个带有动画的评分控件，可以设置图片和个数
 
+![image](https://github.com/JackWong025/Android_custom_ratingbarview/blob/master/1.gif)
+
 ### Usage
 
 #### In XML  Directly
@@ -38,4 +40,4 @@
         });
 
 
-![image](https://github.com/JackWong025/Android_custom_ratingbarview/blob/master/1.gif)
+
